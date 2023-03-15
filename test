@@ -18,3 +18,29 @@ class Booking:
     def __init__(self, train, passenger):
         self.train = train
         self.passenger = passenger
+
+ # Generate a unique PNR number for the booking
+        self.pnr = self.generate_pnr()
+
+    def generate_pnr(self):
+        import random
+        return str(random.randint(100000, 999999))
+
+    def display_booking_details(self):
+        print("PNR: ", self.pnr)
+        print("Train No.: ", self.train.train_no)
+        print("From: ", self.train.from_station)
+        print("To: ", self.train.to_station)
+        print("Departure Time: ", self.train.departure_time)
+        print("Arrival Time: ", self.train.arrival_time)
+        print("Passenger Name: ", self.passenger.name)
+        print("Age: ", self.passenger.age)
+        print("Gender: ", self.passenger.gender)
+        print("Phone No.: ", self.passenger.phone_no)
+        print("Fare: ", self.train.fare)
+
+# Sample usage
+t = Train("12345", "Delhi", "Mumbai", "08:00", "20:00", 2000)
+p = Passenger("John Doe", 25, "Male", "9999999999")
+b = Booking(t, p)
+b.display_booking_details()
